@@ -231,10 +231,94 @@
         location.reload(); // لإعادة تحميل النسخة العربية
       }
     }
+    else if (html.lang === "en") {
+  html.lang = "fr";
+  html.dir = "ltr";
+  document.title = "YAZAN EL MOUAID kamal – Développeur E-commerce";
+  document.querySelector("header h1").textContent = "YAZAN EL MOUAID kamal";
+  document.querySelector("header p").textContent = "Développeur E-commerce | Shopify & WordPress";
+  document.querySelector(".lang-toggle").textContent = "Español";
+  document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> À propos';
+  document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> Compétences';
+  document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Formations';
+  document.querySelectorAll("nav .links a")[3].innerHTML = '<i class="fas fa-project-diagram"></i> Projets';
+  document.querySelectorAll("nav .links a")[4].innerHTML = '<i class="fas fa-envelope"></i> Contact';
+  document.querySelector("#about h2").innerHTML = '<i class="fas fa-user"></i> À propos de moi';
+  document.querySelector("#about p").textContent = "Je suis développeur web spécialisé dans les plateformes e-commerce évolutives pour le monde arabe. J'utilise WordPress Multisite et Shopify pour offrir des interfaces simples et efficaces.";
+  document.querySelector("#skills h2").innerHTML = '<i class="fas fa-code"></i> Compétences techniques';
+  document.querySelector("#skills .grid").innerHTML = `
+    <div class="card">Développement de thèmes Shopify avec Liquid</div>
+    <div class="card">WooCommerce & WordPress Multisite</div>
+    <div class="card">Tableaux de bord personnalisés pour SaaS</div>
+    <div class="card">Intégration des plugins : abonnements, rôles, automatisation</div>
+    <div class="card">Prototypage local avec XAMPP</div>
+    <div class="card">Design UX pour utilisateurs non techniques</div>
+  `;
+  document.querySelector("#courses h2").innerHTML = '<i class="fas fa-graduation-cap"></i> Formations & Certifications';
+  document.querySelector("#courses .grid").innerHTML = `
+    <div class="card">Développement de thèmes Shopify – Udemy</div>
+    <div class="card">WordPress & WooCommerce avancés – Coursera</div>
+    <div class="card">Design web responsive – freeCodeCamp</div>
+    <div class="card">Hacking éthique – TryHackMe</div>
+    <div class="card">Maîtrise de JavaScript – Scrimba</div>
+  `;
+  document.querySelector("#projects h2").innerHTML = '<i class="fas fa-project-diagram"></i> Projets en cours';
+  document.querySelector("#projects p").textContent = "Je développe une plateforme SaaS multi-boutiques avec WordPress Multisite, supportant l’arabe, avec des plans d’abonnement flexibles et des tableaux de bord personnalisés.";
+  document.querySelector("#contact h2").innerHTML = '<i class="fas fa-envelope"></i> Me contacter';
+  document.querySelector("#contact .contact").innerHTML = `
+    <a href="mailto:saharalayer@outlook.com"><i class="fas fa-envelope"></i> Email</a>
+    <a href="https://www.linkedin.com/in/saharalayer" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/saharalayer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  `;
+  document.querySelector("footer").innerHTML = "&copy; 2025 YAZAN – saharalayer.github.io";
+}
+else if (html.lang === "fr") {
+  html.lang = "es";
+  html.dir = "ltr";
+  document.title = "YAZAN EL MOUAID kamal – Desarrollador de comercio electrónico";
+  document.querySelector("header h1").textContent = "YAZAN EL MOUAID kamal";
+  document.querySelector("header p").textContent = "Desarrollador de comercio electrónico | Shopify & WordPress";
+  document.querySelector(".lang-toggle").textContent = "العربية";
+  document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> Sobre mí';
+  document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> Habilidades';
+  document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Cursos';
+  document.querySelectorAll("nav .links a")[3].innerHTML = '<i class="fas fa-project-diagram"></i> Proyectos';
+  document.querySelectorAll("nav .links a")[4].innerHTML = '<i class="fas fa-envelope"></i> Contacto';
+  document.querySelector("#about h2").innerHTML = '<i class="fas fa-user"></i> Sobre mí';
+  document.querySelector("#about p").textContent = "Soy desarrollador web especializado en plataformas de comercio electrónico escalables para el mundo árabe. Utilizo WordPress Multisite y Shopify para ofrecer interfaces simples y efectivas.";
+  document.querySelector("#skills h2").innerHTML = '<i class="fas fa-code"></i> Habilidades técnicas';
+  document.querySelector("#skills .grid").innerHTML = `
+    <div class="card">Desarrollo de temas Shopify con Liquid</div>
+    <div class="card">WooCommerce & WordPress Multisite</div>
+    <div class="card">Paneles personalizados para SaaS</div>
+    <div class="card">Integración de plugins: suscripciones, roles, automatización</div>
+    <div class="card">Prototipado local con XAMPP</div>
+    <div class="card">Diseño UX para usuarios no técnicos</div>
+  `;
+  document.querySelector("#courses h2").innerHTML = '<i class="fas fa-graduation-cap"></i> Cursos y Certificaciones';
+  document.querySelector("#courses .grid").innerHTML = `
+    <div class="card">Desarrollo de temas Shopify – Udemy</div>
+    <div class="card">WordPress & WooCommerce avanzado – Coursera</div>
+    <div class="card">Diseño web responsivo – freeCodeCamp</div>
+    <div class="card">Hacking ético – TryHackMe</div>
+    <div class="card">Dominio de JavaScript – Scrimba</div>
+  `;
+  document.querySelector("#projects h2").innerHTML = '<i class="fas fa-project-diagram"></i> Proyectos actuales';
+  document.querySelector("#projects p").textContent = "Estoy desarrollando una plataforma SaaS multi-tienda con WordPress Multisite, compatible con árabe, con planes de suscripción flexibles y paneles personalizados para cada cliente.";
+  document.querySelector("#contact h2").innerHTML = '<i class="fas fa-envelope"></i> Contáctame';
+  document.querySelector("#contact .contact").innerHTML = `
+    <a href="mailto:saharalayer@outlook.com"><i class="fas fa-envelope"></i> Email</a>
+    <a href="https://www.linkedin.com/in/saharalayer" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/saharalayer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  `;
+  document.querySelector("footer").innerHTML = "&copy; 2025 YAZAN – saharalayer.github.io";
+}
+
   </script>
 
 </body>
 </html>
+
 
 
 
