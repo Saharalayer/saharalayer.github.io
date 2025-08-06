@@ -1,56 +1,56 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>محمد – مطور منصات التجارة الإلكترونية</title>
+  <title>محمد – مطور التجارة الإلكترونية</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: #f0f2f5;
+      background-color: #f4f6f8;
       color: #333;
       line-height: 1.6;
+      transition: all 0.3s ease;
     }
     header {
-      background: linear-gradient(to right, #2c3e50, #34495e);
+      background: linear-gradient(to left, #2c3e50, #34495e);
       color: white;
       padding: 60px 20px;
       text-align: center;
     }
-    header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2em;
-      opacity: 0.9;
-    }
+    header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    header p { font-size: 1.2em; opacity: 0.9; }
+
     nav {
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
-      justify-content: center;
-      padding: 10px 0;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    nav a {
-      margin: 0 15px;
+    nav .links a {
+      margin: 0 10px;
       text-decoration: none;
       color: #2c3e50;
       font-weight: bold;
-      transition: color 0.3s;
     }
-    nav a:hover {
-      color: #3498db;
+    nav .links a:hover { color: #3498db; }
+    nav .lang-toggle {
+      background: #3498db;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
     }
+
     section {
       max-width: 1100px;
       margin: auto;
@@ -60,9 +60,9 @@
       color: #2c3e50;
       margin-bottom: 20px;
       font-size: 1.8em;
-      border-bottom: 2px solid #3498db;
-      display: inline-block;
-      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .grid {
       display: grid;
@@ -74,14 +74,12 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .card:hover {
-      transform: translateY(-3px);
       transition: 0.3s ease;
     }
+    .card:hover { transform: translateY(-3px); }
     .contact a {
       display: inline-block;
-      margin-right: 15px;
+      margin: 10px 15px 0 0;
       color: #3498db;
       text-decoration: none;
       font-weight: bold;
@@ -93,15 +91,9 @@
       font-size: 0.9em;
     }
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-      nav {
-        flex-direction: column;
-      }
-      nav a {
-        margin: 10px 0;
-      }
+      header h1 { font-size: 2em; }
+      nav { flex-direction: column; align-items: flex-start; }
+      nav .links { margin-bottom: 10px; }
     }
   </style>
 </head>
@@ -113,23 +105,26 @@
   </header>
 
   <nav>
-    <a href="#about">نبذة</a>
-    <a href="#skills">المهارات</a>
-    <a href="#courses">الدورات</a>
-    <a href="#projects">المشاريع</a>
-    <a href="#contact">تواصل</a>
+    <div class="links">
+      <a href="#about"><i class="fas fa-user"></i> نبذة</a>
+      <a href="#skills"><i class="fas fa-code"></i> المهارات</a>
+      <a href="#courses"><i class="fas fa-graduation-cap"></i> الدورات</a>
+      <a href="#projects"><i class="fas fa-project-diagram"></i> المشاريع</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> تواصل</a>
+    </div>
+    <div class="lang-toggle" onclick="toggleLang()">English</div>
   </nav>
 
   <section id="about">
-    <h2>نبذة عني</h2>
+    <h2><i class="fas fa-user"></i> نبذة عني</h2>
     <p>
       أنا مطور ويب متخصص في بناء منصات التجارة الإلكترونية القابلة للتوسع، مع تركيز على السوق العربي.
-      أعمل على تطوير واجهات سهلة الاستخدام باستخدام WordPress Multisite وShopify، وأسعى لتمكين أصحاب المتاجر من إدارة أعمالهم بدون تعقيدات تقنية.
+      أعمل على تطوير واجهات سهلة باستخدام WordPress Multisite وShopify، وأسعى لتمكين أصحاب المتاجر من إدارة أعمالهم بدون تعقيدات تقنية.
     </p>
   </section>
 
   <section id="skills">
-    <h2>المهارات التقنية</h2>
+    <h2><i class="fas fa-code"></i> المهارات التقنية</h2>
     <div class="grid">
       <div class="card">تطوير ثيمات Shopify باستخدام Liquid</div>
       <div class="card">WooCommerce و WordPress Multisite</div>
@@ -141,7 +136,7 @@
   </section>
 
   <section id="courses">
-    <h2>الدورات والشهادات</h2>
+    <h2><i class="fas fa-graduation-cap"></i> الدورات والشهادات</h2>
     <div class="grid">
       <div class="card">Shopify Theme Development – Udemy</div>
       <div class="card">Advanced WordPress & WooCommerce – Coursera</div>
@@ -152,24 +147,73 @@
   </section>
 
   <section id="projects">
-    <h2>المشاريع الحالية</h2>
+    <h2><i class="fas fa-project-diagram"></i> المشاريع الحالية</h2>
     <p>
       أعمل على بناء منصة SaaS متعددة المتاجر باستخدام WordPress Multisite، تدعم اللغة العربية، وتوفر خطط اشتراك مرنة ولوحات تحكم مخصصة لكل عميل.
     </p>
   </section>
 
   <section id="contact">
-    <h2>تواصل معي</h2>
+    <h2><i class="fas fa-envelope"></i> تواصل معي</h2>
     <div class="contact">
-      <a href="mailto:mohamed@example.com">📧 البريد الإلكتروني</a>
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">💼 LinkedIn</a>
-      <a href="https://github.com/saharalayer" target="_blank">🐙 GitHub</a>
+      <a href="mailto:mohamed@example.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/saharalayer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
     </div>
   </section>
 
   <footer>
     &copy; 2025 محمد – saharalayer.github.io
   </footer>
+
+  <script>
+    function toggleLang() {
+      const html = document.documentElement;
+      if (html.lang === "ar") {
+        html.lang = "en";
+        html.dir = "ltr";
+        document.title = "Mohamed – E-commerce Developer";
+        document.querySelector("header h1").textContent = "Mohamed";
+        document.querySelector("header p").textContent = "E-commerce Developer | Shopify & WordPress";
+        document.querySelector(".lang-toggle").textContent = "العربية";
+        document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> About';
+        document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> Skills';
+        document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Courses';
+        document.querySelectorAll("nav .links a")[3].innerHTML = '<i class="fas fa-project-diagram"></i> Projects';
+        document.querySelectorAll("nav .links a")[4].innerHTML = '<i class="fas fa-envelope"></i> Contact';
+        document.querySelector("#about h2").innerHTML = '<i class="fas fa-user"></i> About Me';
+              document.querySelector("#about p").textContent = "I'm a web developer focused on scalable e-commerce platforms for the Arab world. I specialize in WordPress Multisite and Shopify, aiming to empower store owners with easy-to-use interfaces.";
+        document.querySelector("#skills h2").innerHTML = '<i class="fas fa-code"></i> Technical Skills';
+        document.querySelector("#skills .grid").innerHTML = `
+          <div class="card">Shopify theme development using Liquid</div>
+          <div class="card">WooCommerce & WordPress Multisite</div>
+          <div class="card">Custom dashboards for SaaS platforms</div>
+          <div class="card">Plugin integration: subscriptions, roles, automation</div>
+          <div class="card">Local prototyping with XAMPP</div>
+          <div class="card">UX design for non-technical users</div>
+        `;
+        document.querySelector("#courses h2").innerHTML = '<i class="fas fa-graduation-cap"></i> Courses & Certifications';
+        document.querySelector("#courses .grid").innerHTML = `
+          <div class="card">Shopify Theme Development – Udemy</div>
+          <div class="card">Advanced WordPress & WooCommerce – Coursera</div>
+          <div class="card">Responsive Web Design – freeCodeCamp</div>
+          <div class="card">Ethical Hacking – TryHackMe</div>
+          <div class="card">JavaScript Mastery – Scrimba</div>
+        `;
+        document.querySelector("#projects h2").innerHTML = '<i class="fas fa-project-diagram"></i> Current Projects';
+        document.querySelector("#projects p").textContent = "Building a multi-store SaaS platform using WordPress Multisite, with Arabic support, flexible subscription plans, and custom dashboards for each client.";
+        document.querySelector("#contact h2").innerHTML = '<i class="fas fa-envelope"></i> Contact Me';
+        document.querySelector("#contact .contact").innerHTML = `
+          <a href="mailto:mohamed@example.com"><i class="fas fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/saharalayer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        `;
+        document.querySelector("footer").innerHTML = "&copy; 2025 Mohamed – saharalayer.github.io";
+      } else {
+        location.reload(); // لإعادة تحميل النسخة العربية
+      }
+    }
+  </script>
 
 </body>
 </html>
