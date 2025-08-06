@@ -103,6 +103,23 @@
         height: 12px;
       }
     }
+
+/* تحسينات للشاشات الصغيرة جداً */
+@media (max-width: 400px) {
+  header {
+    padding: 30px 10px;
+    gap: 10px;
+  }
+  .profile-logo {
+    width: 70px;
+  }
+  .header-content h1 {
+    font-size: 1.5em;
+  }
+  .header-content p {
+    font-size: 0.9em;
+  }
+}
     .profile-logo {
   width: 120px;
   height: auto;
@@ -132,13 +149,39 @@ html[lang="ar"] .header-content {
 @media (max-width: 600px) {
   .profile-logo {
     width: 80px;
+    margin-bottom: 5px;
   }
   header {
-    flex-direction: column;
-    text-align: center;
+    padding: 40px 15px;
+    gap: 15px;
+    /* الحفاظ على التخطيط الأفقي حتى في الهواتف */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
-  .profile-logo, .header-content {
-    order: unset;
+  .header-content h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+  }
+  .header-content p {
+    font-size: 1em;
+  }
+  /* الحفاظ على ترتيب اللغات */
+  html[lang="ar"] .profile-logo {
+    order: 2;
+  }
+  html[lang="ar"] .header-content {
+    order: 1;
+  }
+  html[lang="en"] .profile-logo,
+  html[lang="fr"] .profile-logo,
+  html[lang="es"] .profile-logo {
+    order: 1;
+  }
+  html[lang="en"] .header-content,
+  html[lang="fr"] .header-content,
+  html[lang="es"] .header-content {
+    order: 2;
   }
 }
 /* حاوية الأعلام */
