@@ -19,7 +19,11 @@
       background: linear-gradient(to left, #2c3e50, #34495e);
       color: white;
       padding: 60px 20px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
     }
     header h1 { font-size: 2.5em; margin-bottom: 10px; }
     header p { font-size: 1.2em; opacity: 0.9; }
@@ -106,14 +110,35 @@
   margin-bottom: 15px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
+  order: 1;
 }
 .profile-logo:hover {
   transform: scale(1.05);
 }
 
+.header-content {
+  text-align: center;
+  order: 2;
+}
+
+/* ترتيب للعربية - الصورة على اليمين */
+html[lang="ar"] .profile-logo {
+  order: 2;
+}
+html[lang="ar"] .header-content {
+  order: 1;
+}
+
 @media (max-width: 600px) {
   .profile-logo {
     width: 80px;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-logo, .header-content {
+    order: unset;
   }
 }
 /* حاوية الأعلام */
@@ -158,8 +183,10 @@
 
   <header>
     <img src="ymk-logo.jpg" alt="Yazan Logo" class="profile-logo" />
-    <h1>يزن المؤيد كمال</h1>
-    <p>مطور منصات التجارة الإلكترونية | Shopify و WordPress</p>
+    <div class="header-content">
+      <h1>يزن المؤيد كمال</h1>
+      <p>مطور منصات التجارة الإلكترونية | Shopify و WordPress</p>
+    </div>
   </header>
 
   <nav>
@@ -237,8 +264,8 @@
 
     if (lang === "ar") {
       document.title = "يزن المؤيد كمال – مطور التجارة الإلكترونية";
-      document.querySelector("header h1").textContent = "يزن المؤيد كمال";
-      document.querySelector("header p").textContent = "مطوّر التجارة الإلكترونية | شوبيفاي و ووردبريس";
+      document.querySelector("header .header-content h1").textContent = "يزن المؤيد كمال";
+      document.querySelector("header .header-content p").textContent = "مطوّر التجارة الإلكترونية | شوبيفاي و ووردبريس";
       document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> من أنا';
       document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> المهارات';
       document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> الدورات';
@@ -276,8 +303,8 @@
 
     if (lang === "en") {
       document.title = "YAZAN EL MOUAID kamal – E-commerce Developer";
-      document.querySelector("header h1").textContent = "YAZAN EL MOUAID kamal";
-      document.querySelector("header p").textContent = "E-commerce Developer | Shopify & WordPress";
+      document.querySelector("header .header-content h1").textContent = "YAZAN EL MOUAID kamal";
+      document.querySelector("header .header-content p").textContent = "E-commerce Developer | Shopify & WordPress";
       document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> About';
       document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> Skills';
       document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Courses';
@@ -315,8 +342,8 @@
 
     if (lang === "fr") {
       document.title = "YAZAN EL MOUAID kamal – Développeur E-commerce";
-      document.querySelector("header h1").textContent = "YAZAN EL MOUAID kamal";
-      document.querySelector("header p").textContent = "Développeur E-commerce | Shopify & WordPress";
+      document.querySelector("header .header-content h1").textContent = "YAZAN EL MOUAID kamal";
+      document.querySelector("header .header-content p").textContent = "Développeur E-commerce | Shopify & WordPress";
       document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> À propos';
       document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> Compétences';
       document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Formations';
@@ -353,8 +380,8 @@
     }
     if (lang === "es") {
       document.title = "YAZAN EL MOUAID kamal – Desarrollador de comercio electrónico";
-      document.querySelector("header h1").textContent = "YAZAN EL MOUAID kamal";
-      document.querySelector("header p").textContent = "Desarrollador de comercio electrónico | Shopify & WordPress";
+      document.querySelector("header .header-content h1").textContent = "YAZAN EL MOUAID kamal";
+      document.querySelector("header .header-content p").textContent = "Desarrollador de comercio electrónico | Shopify & WordPress";
       document.querySelectorAll("nav .links a")[0].innerHTML = '<i class="fas fa-user"></i> Sobre mí';
       document.querySelectorAll("nav .links a")[1].innerHTML = '<i class="fas fa-code"></i> Habilidades';
       document.querySelectorAll("nav .links a")[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Cursos';
@@ -395,14 +422,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
