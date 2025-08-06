@@ -1,138 +1,126 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدارتي</title>
-    <!-- استيراد خط القاهرة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* تطبيق خط القاهرة على الصفحة */
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-            font-weight: 600;
-            font-size: 24px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-
-        label {
-            font-size: 16px;
-            font-weight: bold;
-            text-align: right;
-            width: 100%;
-            color: #555;
-        }
-
-        input {
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.3s ease;
-            width: 100%;
-            background-color: #f9f9f9;
-        }
-
-        input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-            background-color: #fff;
-        }
-
-        button {
-            padding: 12px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            box-shadow: 0 4px 10px rgba(0, 91, 179, 0.3);
-        }
-
-        /* تحسين مظهر الحقول */
-        input::placeholder {
-            color: #aaa;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed – E-commerce Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #f9f9f9;
+      --text: #333;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 10px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .contact a {
+      display: inline-block;
+      margin-right: 15px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>مرحبًا بك في إدارتي</h1>
-        <form id="login-form">
-            <label for="username">اسم المستخدم:</label>
-            <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" required>
-            
-            <label for="password">كلمة المرور:</label>
-            <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
-            
-            <button type="submit">تسجيل الدخول</button>
-        </form>
+
+  <header>
+    <h1>Mohamed</h1>
+    <p>E-commerce Developer | Shopify & WordPress Expert</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate web developer focused on building scalable e-commerce platforms for the Arab world.
+      I specialize in Shopify theme development, WordPress Multisite, and user-friendly SaaS interfaces.
+    </p>
+
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Shopify theme development (Liquid)</li>
+      <li>WooCommerce & WordPress Multisite</li>
+      <li>Custom dashboards for SaaS platforms</li>
+      <li>Plugin integration: subscriptions, roles, automation</li>
+      <li>Local prototyping with XAMPP</li>
+      <li>UX design for non-technical users</li>
+    </ul>
+
+    <h2>Courses & Certifications</h2>
+    <ul>
+      <li>Shopify Theme Development – Udemy</li>
+      <li>Advanced WordPress & WooCommerce – Coursera</li>
+      <li>Responsive Web Design – freeCodeCamp</li>
+      <li>Ethical Hacking & Cybersecurity – TryHackMe</li>
+      <li>JavaScript & Frontend Mastery – Scrimba</li>
+    </ul>
+
+    <h2>Current Projects</h2>
+    <p>
+      Building a multi-store SaaS platform using WordPress Multisite, with RTL support, subscription tiers, and custom admin dashboards.
+    </p>
+
+    <h2>Vision</h2>
+    <p>
+      Launch a scalable Arabic SaaS platform for e-commerce, empowering users to build and manage their stores without technical barriers.
+    </p>
+
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="mailto:mohamed@example.com">📧 Email</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/saharalayer" target="_blank">🐙 GitHub</a>
     </div>
-    <script src="app.js"></script>
-    <script>
-        document.getElementById('login-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
+  </section>
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+  <footer>
+    &copy; 2025 Mohamed – saharalayer.github.io
+  </footer>
 
-            const response = await fetch('http://127.0.0.1:5000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password }),
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                alert(result.message);
-                window.location.href = 'dashboard.html';
-            } else {
-                alert(result.message);
-            }
-        });
-    </script>
 </body>
 </html>
