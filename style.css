@@ -1,88 +1,238 @@
+/* Project: Sahara Layer - Full Stylesheet
+   Version: 2.0 (Integrated for all pages)
+   Style: luxury Minimalist Moroccan
+*/
+
 :root {
     --gold: #d4af37;
+    --gold-dark: #b48e47;
     --dark: #0f0f0f;
     --white: #ffffff;
     --bg-light: #f9f9f9;
+    --text-main: #2d2d2d;
+    --text-muted: #666666;
     --glass: rgba(255, 255, 255, 0.95);
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: 'Cairo', 'Almarai', sans-serif;
-    background: var(--bg-light);
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-    background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+/* الأساسيات */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
-.container { width: 90%; max-width: 1200px; margin: auto; }
+body {
+    font-family: 'Cairo', 'Almarai', 'Montserrat', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('https://www.transparenttextures.com/patterns/arabesque.png'); /* نقش مغربي خفيف */
+    scroll-behavior: smooth;
+}
 
-/* Header */
+.container { 
+    width: 90%; 
+    max-width: 1200px; 
+    margin: auto; 
+}
+
+/* --- الهيدر (Header) --- */
 .main-header {
     background: var(--glass);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 15px 0;
-    position: fixed; top: 0; width: 100%; z-index: 1000;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000;
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.header-flex { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; }
-.logo span { color: var(--gold); }
-
-.nav-wrapper { display: flex; align-items: center; gap: 30px; }
-.nav-links { list-style: none; display: flex; gap: 25px; }
-.nav-links a { text-decoration: none; color: var(--dark); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
-.nav-links a:hover { color: var(--gold); }
-
-.header-lang-switcher select {
-    padding: 5px 10px; border-radius: 20px; border: 1px solid #ddd; font-family: inherit; cursor: pointer; outline: none;
+.header-flex { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
 }
 
-/* Hero */
+.logo { 
+    font-weight: 700; 
+    font-size: 1.5rem; 
+    letter-spacing: 2px; 
+}
+
+.logo span { color: var(--gold); }
+
+.nav-wrapper { 
+    display: flex; 
+    align-items: center; 
+    gap: 30px; 
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 25px; 
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--dark); 
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    transition: var(--transition); 
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* محول اللغات */
+.header-lang-switcher select {
+    padding: 6px 12px; 
+    border-radius: 20px; 
+    border: 1px solid #ddd; 
+    font-family: inherit; 
+    cursor: pointer; 
+    outline: none;
+    background: #fff;
+}
+
+/* --- قسم الهيرو (Hero) --- */
 .hero {
-    height: 100vh; position: relative;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+    height: 100vh; 
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
     background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
                 url('https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=1470&auto=format&fit=crop');
-    background-size: cover; background-position: center; color: var(--white);
+    background-size: cover; 
+    background-position: center; 
+    color: var(--white);
 }
 
 .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; }
 .hero-line { width: 60px; height: 3px; background: var(--gold); margin: 20px auto; }
-.hero p { font-size: 1.2rem; opacity: 0.9; font-weight: 300; max-width: 700px; margin: auto; }
+.hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: auto; font-weight: 300; }
 
 .btn-gold {
-    display: inline-block; margin-top: 35px; padding: 14px 45px;
-    background: var(--gold); color: #fff; text-decoration: none;
-    border-radius: 50px; font-weight: 600; transition: var(--transition);
+    display: inline-block; 
+    margin-top: 35px; 
+    padding: 14px 45px;
+    background: var(--gold); 
+    color: #fff; 
+    text-decoration: none;
+    border-radius: 50px; 
+    font-weight: 600; 
+    transition: var(--transition);
 }
-.btn-gold:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212,175,55,0.4); }
 
-/* Services */
-.services-section { padding: 120px 0; }
+.btn-gold:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(212,175,55,0.4); 
+}
+
+/* --- بنر الصفحات الداخلية (Page Banner) --- */
+.page-banner {
+    padding: 180px 0 100px;
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    background-image: linear-gradient(45deg, #0f0f0f 25%, #1a1a1a 100%);
+}
+
+.page-banner h1 { font-size: 3rem; margin-bottom: 15px; }
+.page-banner p { opacity: 0.6; font-weight: 300; letter-spacing: 1px; }
+
+/* --- شبكة الخدمات (Services Grid) --- */
+.section-padding { padding: 100px 0; }
 .section-info { text-align: center; margin-bottom: 70px; }
 .section-info h2 { font-size: 2.5rem; margin-bottom: 15px; }
 
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px; }
-.service-card {
-    background: var(--white); padding: 60px 40px; border-radius: 25px;
-    text-align: center; transition: var(--transition); border: 1px solid rgba(0,0,0,0.03);
+.services-grid, .services-detailed-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 35px; 
 }
-.service-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.06); }
-.s-icon { font-size: 3.5rem; color: var(--gold); margin-bottom: 25px; display: block; }
 
-/* Footer */
-footer { background: var(--dark); color: #555; padding: 60px 0; text-align: center; font-size: 0.85rem; letter-spacing: 2px; }
+/* بطاقات الخدمات */
+.service-card, .service-item {
+    background: var(--white); 
+    padding: 50px 30px; 
+    border-radius: 25px;
+    text-align: center; 
+    transition: var(--transition); 
+    border: 1px solid rgba(0,0,0,0.03);
+}
 
-/* Responsive Mobile Menu Fix */
+.service-card:hover, .service-item:hover { 
+    transform: translateY(-15px); 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.06); 
+}
+
+.s-icon, .s-large-icon { 
+    font-size: 3.5rem; 
+    color: var(--gold); 
+    margin-bottom: 25px; 
+    display: block; 
+}
+
+/* قائمة المميزات داخل الخدمات */
+.features-list {
+    list-style: none;
+    margin: 25px 0;
+    text-align: right;
+}
+
+[dir="ltr"] .features-list { text-align: left; }
+
+.features-list li {
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.features-list li::before {
+    content: "•";
+    color: var(--gold);
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.btn-order {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    background: var(--dark);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.btn-order:hover { background: var(--gold); transform: scale(1.02); }
+
+/* --- التذييل (Footer) --- */
+footer { 
+    background: var(--dark); 
+    color: #555; 
+    padding: 60px 0; 
+    text-align: center; 
+    font-size: 0.85rem; 
+    letter-spacing: 2px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- الجوال (Mobile & Responsiveness) --- */
 .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
 
 @media (max-width: 768px) {
-    .mobile-menu-btn { display: block; }
+    .mobile-menu-btn { display: block; z-index: 1001; }
     
     .nav-links { 
         display: none; 
@@ -99,87 +249,12 @@ footer { background: var(--dark); color: #555; padding: 60px 0; text-align: cent
     }
 
     .nav-links.active { display: flex !important; }
+    
     .hero h1 { font-size: 2.8rem; }
+    .page-banner h1 { font-size: 2.2rem; }
+    .section-padding { padding: 60px 0; }
 }
 
+/* دعم الاتجاهات LTR */
 [dir="ltr"] .nav-wrapper { flex-direction: row-reverse; }
-/* --- Services Page Styles --- */
-.page-banner {
-    padding: 150px 0 80px;
-    background: var(--dark);
-    color: var(--white);
-    text-align: center;
-}
-
-.page-banner h1 { font-size: 2.8rem; margin-bottom: 15px; }
-.page-banner p { opacity: 0.7; font-weight: 300; }
-
-.services-detailed-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-}
-
-.service-item {
-    background: var(--white);
-    padding: 50px 30px;
-    border-radius: 30px;
-    transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.05);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.service-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-}
-
-.s-large-icon {
-    font-size: 3.5rem;
-    color: var(--gold);
-    margin-bottom: 25px;
-    display: block;
-}
-
-.features-list {
-    list-style: none;
-    margin: 25px 0;
-    text-align: right;
-}
-
-[dir="ltr"] .features-list { text-align: left; }
-
-.features-list li {
-    padding: 8px 0;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.features-list li::before {
-    content: "•";
-    color: var(--gold);
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-.btn-order {
-    display: block;
-    text-align: center;
-    padding: 12px;
-    background: var(--dark);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: 0.3s;
-    margin-top: 20px;
-}
-
-.btn-order:hover {
-    background: var(--gold);
-    color: #fff;
-}
+[dir="ltr"] .features-list li::before { margin-right: 10px; margin-left: 0; }
