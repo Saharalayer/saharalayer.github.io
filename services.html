@@ -3,83 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا | Sahara Layer - حلول رقمية وإبداعية</title>
-    <meta name="description" content="اكتشف خدمات صحراء لاير: إدارة السوشيال ميديا، البرمجة المخصصة، التصميم الجرافيكي، وخدمات خرائط جوجل وسناب شات.">
-    
+    <title>خدماتنا | Sahara Layer Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">SAHARA LAYER</div>
-            <ul>
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
+    <header class="main-header">
+        <div class="logo">SAHARA LAYER</div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+        </ul>
     </header>
 
     <section class="container">
-        <h1 class="section-title">خدماتنا الإبداعية</h1>
+        <h2 class="section-title">خدماتنا الإحترافية</h2>
         
-        <div class="services-detailed-grid">
-            
-            <div class="service-item card">
-                <div class="icon">📱</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-hashtag icon"></i>
                 <h3>خدمات السوشيال ميديا</h3>
-                <p class="lang-content ar">إدارة الحسابات، صناعة المحتوى الإبداعي، وزيادة التفاعل مع الجمهور المستهدف.</p>
-                <p class="lang-content en" style="display:none;">Social Media Management, content creation, and audience engagement.</p>
-                <p class="lang-content fr" style="display:none;">Gestion des réseaux sociaux, création de contenu et engagement.</p>
-                <p class="lang-content es" style="display:none;">Gestión de redes sociales, creación de contenido y compromiso.</p>
+                <p>إدارة منصات التواصل الاجتماعي، إنشاء المحتوى المرئي، وحملات التفاعل الإبداعية.</p>
             </div>
 
-            <div class="service-item card">
-                <div class="icon">💻</div>
+            <div class="service-card">
+                <i class="fa-solid fa-code icon"></i>
                 <h3>خدمات البرمجة</h3>
-                <p class="lang-content ar">تطوير تطبيقات الويب، أنظمة الإدارة، وحلول البرمجيات المخصصة باستخدام أحدث التقنيات.</p>
-                <p class="lang-content en" style="display:none;">Web development, management systems, and custom software solutions.</p>
-                <p class="lang-content fr" style="display:none;">Développement web, systèmes de gestion et solutions logicielles.</p>
-                <p class="lang-content es" style="display:none;">Desarrollo web, sistemas de gestión y soluciones de software.</p>
+                <p>بناء مواقع إلكترونية متطورة، تطبيقات ويب سريعة، وحلول برمجية مخصصة لعملك.</p>
             </div>
 
-            <div class="service-item card">
-                <div class="icon">🎨</div>
+            <div class="service-card">
+                <i class="fa-solid fa-pen-nib icon"></i>
                 <h3>خدمات التصميم</h3>
-                <p class="lang-content ar">تصميم الهويات البصرية، الشعارات، وتجربة المستخدم بنمط المينيماليست الأصيل.</p>
-                <p class="lang-content en" style="display:none;">Visual identity, logo design, and UX/UI with authentic minimalism.</p>
-                <p class="lang-content fr" style="display:none;">Identité visuelle, design de logos et UX/UI au style minimaliste.</p>
-                <p class="lang-content es" style="display:none;">Identidad visual, diseño de logotipos y UX/UI con minimalismo.</p>
+                <p>تصميم شعارات، هويات بصرية متكاملة، ومنشورات إعلانية بنمط مينيماليست فاخر.</p>
             </div>
 
-            <div class="service-item card">
-                <div class="icon">📍</div>
+            <div class="service-card">
+                <i class="fa-solid fa-location-dot icon"></i>
                 <h3>خرائط جوجل وسناب شات</h3>
-                <p class="lang-content ar">توثيق المواقع على الخرائط، وإدارة الحملات الإعلانية وفلاتر سناب شات الجغرافية.</p>
-                <p class="lang-content en" style="display:none;">Google Maps SEO, Snapchat ads management, and geofilters.</p>
-                <p class="lang-content fr" style="display:none;">Optimisation Google Maps, publicités Snapchat et géofiltres.</p>
-                <p class="lang-content es" style="display:none;">Optimización de Google Maps, anuncios de Snapchat y geofiltros.</p>
+                <p>تحسين ظهورك على Google Maps، إدارة إعلانات سناب شات، وتصميم فلاتر جغرافية.</p>
             </div>
-
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Sahara Layer. Creative Excellence.</p>
-    </footer>
-
-    <script>
-        // كود تبديل اللغات بناءً على الرابط
-        const urlParams = new URLSearchParams(window.location.search);
-        const lang = urlParams.get('lang') || 'ar';
-        document.querySelectorAll('.lang-content').forEach(el => {
-            el.style.display = el.classList.contains(lang) ? 'block' : 'none';
-        });
-        if(lang !== 'ar') {
-            document.documentElement.dir = 'ltr';
-            document.body.style.textAlign = 'left';
-        }
-    </script>
 </body>
 </html>
