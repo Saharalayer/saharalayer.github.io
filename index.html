@@ -3,83 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahara Layer | صحراء لاير - Digital Excellence</title>
+    <meta name="description" content="إبداع رقمي بروح مغربية أصيلة - تصميم، برمجة، وسوشيال ميديا.">
     
-    <title>صحراء لاير | Sahara Layer - Digital Studio</title>
-    <meta name="description" content="استوديو صحراء لاير للخدمات الرقمية: تصميم، برمجة، سوشيال ميديا، وخرائط جوجل بنمط مغربي عصري.">
-    <meta name="keywords" content="Sahara Layer, تصميم جرافيك, برمجة, المغرب, سيو, استوديو إبداعي">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="container">
-            <div class="lang-switcher">
-                <button onclick="changeLang('ar')" id="btn-ar">العربية</button>
-                <button onclick="changeLang('en')" id="btn-en">English</button>
-                <button onclick="changeLang('fr')" id="btn-fr">Français</button>
-                <button onclick="changeLang('es')" id="btn-es">Español</button>
-            </div>
-        </div>
-    </div>
-
     <header class="main-header">
-        <div class="container flex-nav">
-            <div class="logo">SAHARA LAYER</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home" class="tr" data-ar="الرئيسية" data-en="Home" data-fr="Accueil" data-es="Inicio">الرئيسية</a></li>
-                    <li><a href="#services" class="tr" data-ar="خدماتنا" data-en="Services" data-fr="Services" data-es="Servicios">خدماتنا</a></li>
-                    <li><a href="#contact" class="tr" data-ar="اتصل بنا" data-en="Contact" data-fr="Contact" data-es="Contacto">اتصل بنا</a></li>
-                </ul>
-            </nav>
+        <div class="container header-flex">
+            <div class="logo">SAHARA<span>LAYER</span></div>
+            
+            <div class="nav-wrapper">
+                <nav class="desktop-nav">
+                    <ul class="nav-links">
+                        <li><a href="#home" class="tr" data-ar="الرئيسية" data-en="Home" data-fr="Accueil" data-es="Inicio">الرئيسية</a></li>
+                        <li><a href="#services" class="tr" data-ar="خدماتنا" data-en="Services" data-fr="Services" data-es="Servicios">خدماتنا</a></li>
+                        <li><a href="#contact" class="tr" data-ar="اتصل بنا" data-en="Contact" data-fr="Contact" data-es="Contacto">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-lang-switcher">
+                    <select onchange="changeLang(this.value)" id="langSelect">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
         </div>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
             <h1 class="tr" data-ar="صحراء لاير" data-en="Sahara Layer" data-fr="Sahara Layer" data-es="Sahara Layer">صحراء لاير</h1>
-            <p class="tr" data-ar="إبداع رقمي بروح مغربية أصيلة" data-en="Digital creativity with an authentic Moroccan soul" data-fr="Créativité numérique avec une âme marocaine authentique" data-es="Creatividad digital con un alma marroquí auténtica">إبداع رقمي بروح مغربية أصيلة</p>
-            <a href="#contact" class="btn tr" data-ar="ابدأ مشروعك" data-en="Start Now" data-fr="Commencer" data-es="Empezar">ابدأ مشروعك</a>
+            <div class="hero-line"></div>
+            <p class="tr" data-ar="نصنع المستقبل الرقمي بلمسة مغربية فاخرة" data-en="Crafting the digital future with a luxury Moroccan touch" data-fr="Façonner l'avenir numérique avec une touche marocaine de luxe" data-es="Creando el futuro digital con un toque marroquí de lujo">نصنع المستقبل الرقمي بلمسة مغربية فاخرة</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn btn-gold tr" data-ar="اكتشف خدماتنا" data-en="Explore Services" data-fr="Explorer" data-es="Explorar">اكتشف خدماتنا</a>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="container section-padding">
-        <h2 class="section-title tr" data-ar="خدماتنا الإبداعية" data-en="Our Services" data-fr="Nos Services" data-es="Nuestros Servicios">خدماتنا الإبداعية</h2>
+    <section id="services" class="services-section container">
+        <div class="section-info">
+            <h2 class="tr" data-ar="خدماتنا" data-en="Services" data-fr="Services" data-es="Servicios">خدماتنا</h2>
+            <p class="tr" data-ar="حلول متكاملة لنمو أعمالك" data-en="Integrated solutions for your business growth" data-fr="Solutions intégrées pour la croissance de votre entreprise" data-es="Soluciones integradas para el crecimiento de su negocio">حلول متكاملة لنمو أعمالك</p>
+        </div>
+
         <div class="services-grid">
-            
-            <div class="s-card">
-                <i class="fa-solid fa-hashtag"></i>
+            <div class="service-card">
+                <div class="s-icon"><i class="fa-solid fa-rocket"></i></div>
                 <h3 class="tr" data-ar="السوشيال ميديا" data-en="Social Media" data-fr="Réseaux Sociaux" data-es="Redes Sociales">السوشيال ميديا</h3>
-                <p class="tr" data-ar="إدارة الحملات وصناعة المحتوى الإبداعي." data-en="Campaign management and creative content." data-fr="Gestion de campagnes et contenu créatif." data-es="Gestión de campañas y contenido creativo.">إدارة الحملات وصناعة المحتوى الإبداعي.</p>
+                <p class="tr" data-ar="إدارة احترافية وحملات إعلانية مستهدفة." data-en="Professional management and targeted ad campaigns." data-fr="Gestion professionnelle et campagnes publicitaires ciblées." data-es="Gestión profesional y campañas publicitarias dirigidas.">إدارة احترافية وحملات إعلانية مستهدفة.</p>
             </div>
-
-            <div class="s-card">
-                <i class="fa-solid fa-code"></i>
-                <h3 class="tr" data-ar="البرمجة" data-en="Web Development" data-fr="Développement Web" data-es="Desarrollo Web">البرمجة</h3>
-                <p class="tr" data-ar="حلول برمجية ومواقع متطورة وسريعة." data-en="Advanced and fast software solutions." data-fr="Solutions logicielles avancées et rapides." data-es="Soluciones de software avanzadas y rápidas.">حلول برمجية ومواقع متطورة وسريعة.</p>
+            <div class="service-card">
+                <div class="s-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3 class="tr" data-ar="البرمجة" data-en="Development" data-fr="Développement" data-es="Desarrollo">البرمجة</h3>
+                <p class="tr" data-ar="تطوير مواقع وتطبيقات بأحدث التقنيات العالمي." data-en="Developing websites and apps with the latest tech." data-fr="Développement de sites et d'applications avec les dernières technologies." data-es="Desarrollo de sitios web y aplicaciones con la última tecnología.">تطوير مواقع وتطبيقات بأحدث التقنيات العالمية.</p>
             </div>
-
-            <div class="s-card">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <h3 class="tr" data-ar="التصميم" data-en="Graphic Design" data-fr="Design Graphique" data-es="Diseño Gráfico">التصميم</h3>
-                <p class="tr" data-ar="هوية بصرية وشعارات بنمط مينيماليست." data-en="Visual identity and minimalist logos." data-fr="Identité visuelle et logos minimalistes." data-es="Identidad visual y logotipos minimalistas.">هوية بصرية وشعارات بنمط مينيماليست.</p>
+            <div class="service-card">
+                <div class="s-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                <h3 class="tr" data-ar="التصميم الإبداعي" data-en="Creative Design" data-fr="Design Créatif" data-es="Diseño Creativo">التصميم الإبداعي</h3>
+                <p class="tr" data-ar="هويات بصرية وشعارات تعكس تميزك." data-en="Visual identities and logos that reflect your uniqueness." data-fr="Identités visuelles et logos qui reflètent votre unicité." data-es="Identidades visuales y logotipos que reflejan su singularidad.">هويات بصرية وشعارات تعكس تميزك.</p>
             </div>
-
-            <div class="s-card">
-                <i class="fa-solid fa-map-location-dot"></i>
-                <h3 class="tr" data-ar="خرائط جوجل وسناب" data-en="Maps & Snapchat" data-fr="Cartes & Snapchat" data-es="Mapas y Snapchat">خرائط جوجل وسناب</h3>
-                <p class="tr" data-ar="تحسين المواقع الجغرافية وفلاتر سناب شات." data-en="SEO for Maps and Snapchat filters." data-fr="SEO pour Maps et filtres Snapchat." data-es="SEO para Maps y filtros de Snapchat.">تحسين المواقع الجغرافية وفلاتر سناب شات.</p>
+            <div class="service-card">
+                <div class="s-icon"><i class="fa-solid fa-map-pin"></i></div>
+                <h3 class="tr" data-ar="خرائط جوجل وسناب" data-en="Maps & Snap" data-fr="Maps & Snap" data-es="Mapas y Snap">خرائط جوجل وسناب</h3>
+                <p class="tr" data-ar="تعزيز الظهور المحلي وفلاتر سناب شات." data-en="Boosting local presence and Snapchat filters." data-fr="Renforcer la présence locale et les filtres Snapchat." data-es="Aumentar la presencia local y los filtros de Snapchat.">تعزيز الظهور المحلي وفلاتر سناب شات.</p>
             </div>
-
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Sahara Layer. Made with Passion.</p>
+            <p>&copy; 2026 SAHARA LAYER. GLOBAL VISION. MOROCCAN ROOTS.</p>
         </div>
     </footer>
 
@@ -92,13 +96,12 @@
                 el.innerText = el.getAttribute('data-' + lang);
             });
 
-            document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
-            localStorage.setItem('sahara_lang', lang);
+            document.getElementById('langSelect').value = lang;
+            localStorage.setItem('sl_lang', lang);
         }
 
         window.onload = () => {
-            const saved = localStorage.getItem('sahara_lang') || 'ar';
+            const saved = localStorage.getItem('sl_lang') || 'ar';
             changeLang(saved);
         }
     </script>
