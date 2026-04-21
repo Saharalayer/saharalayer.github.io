@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahara Layer Social Stories | تصاميم الستوري</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #0f0f0f;
+            --white: #ffffff;
+            --bg-light: #fbfbfb;
+            --text-muted: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', 'Montserrat', sans-serif;
+            background: #f0f0f0;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* حاوية الستوري المقاسية (1080x1920) */
+        .story-container {
+            width: 360px; /* مقياس للعرض (1/3 من الأصل) */
+            height: 640px; /* مقياس للارتفاع (1/3 من الأصل) */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            background: var(--white);
+            border: 5px solid #333; /* إطار تمثيلي لشاشة الجوال */
+        }
+
+        .story-content {
+            width: 100%;
+            height: 100%;
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* شعار الهوية الموحد @SAHARALAYER */
+        .story-handle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .story-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-align: center;
+            color: var(--dark);
+        }
+        .story-logo span { color: var(--gold); }
+
+        /* الأنماط الزخرفية المغربية */
+        .arabesque-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        /* --- النموذج 1: الإعلان عن خدمة --- */
+        .story-1 {
+            background-color: var(--soft-gray);
+        }
+        .s1-header { text-align: center; margin-top: 50px; }
+        .s1-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .s1-icon { font-size: 4rem; color: var(--gold); margin: 30px auto; display: block; text-align: center; }
+        .s1-features { list-style: none; text-align: center; margin-bottom: 30px; }
+        .s1-features li { padding: 5px 0; color: #555; font-size: 0.95rem; }
+        .s1-features li::before { content: "•"; color: var(--gold); margin: 0 5px; }
+        .story-1 .btn-call { 
+            display: block; width: 100%; padding: 12px; background: var(--dark); 
+            color: #fff; text-align: center; text-decoration: none; border-radius: 30px; 
+            font-weight: 600; font-size: 0.9rem;
+        }
+
+        /* --- النموذج 2: اقتباس/رسالة مينيماليست --- */
+        .story-2 {
+            background: linear-gradient(rgba(15,15,15,0.95), rgba(15,15,15,0.95)), 
+                        url('https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            color: var(--white);
+        }
+        .story-2 .story-logo { color: var(--white); }
+        .s2-quote { text-align: center; margin-top: 100px; font-weight: 300; line-height: 1.8; }
+        .s2-quote h2 { font-size: 1.6rem; font-weight: 400; color: var(--gold); margin-bottom: 10px; }
+        .s2-quote p { font-size: 1.1rem; max-width: 80%; margin: auto; opacity: 0.8; }
+        .s2-line { width: 50px; height: 2px; background: var(--gold); margin: 20px auto; }
+        
+        /* --- النموذج 3: دعوة لاتخاذ إجراء (CTA) --- */
+        .story-3 {
+            background: var(--white);
+        }
+        .s3-hero { text-align: center; margin-top: 60px; }
+        .s3-hero h1 { font-size: 2.2rem; font-weight: 700; color: var(--dark); }
+        .s3-tag { color: var(--gold); font-size: 1rem; margin-bottom: 20px; }
+        .s3-image { width: 100%; height: 180px; background: #eee; border-radius: 10px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 0.8rem;}
+        .story-3 .btn-gold { 
+            display: block; width: 100%; padding: 15px; background: var(--gold); 
+            color: #fff; text-align: center; text-decoration: none; border-radius: 5px; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="story-container story-1">
+        <div class="arabesque-pattern"></div>
+        <div class="story-content">
+            <div class="story-logo">SAHARA<span>LAYER</span></div>
+            
+            <div class="s1-main">
+                <i class="fa-solid fa-code s1-icon"></i>
+                <div class="s1-header">
+                    <h1>خدمات البرمجة</h1>
+                    <p>حلول رقمية متقدمة</p>
+                </div>
+                <div class="hero-line" style="width:40px; height:2px; background:var(--gold); margin: 15px auto;"></div>
+                <ul class="s1-features">
+                    <li>تطوير مواقع الويب</li>
+                    <li>أنظمة مخصصة بالبايثون</li>
+                    <li>متاجر إلكترونية</li>
+                </ul>
+            </div>
+
+            <a href="#" class="btn-call tr">اطلب خدمتك الآن</a>
+            <div class="story-handle">@SAHARALAYER</div>
+        </div>
+    </div>
+
+    <div class="story-container story-2">
+        <div class="arabesque-pattern" style="opacity:0.1;"></div>
+        <div class="story-content">
+            <div class="story-logo">SAHARA<span>LAYER</span></div>
+            
+            <div class="s2-quote">
+                <h2>الأصالة الرقمية</h2>
+                <p>بساطة التصميم بروح مغربية عصرية</p>
+                <div class="s2-line"></div>
+            </div>
+
+            <div class="story-handle">@SAHARALAYER</div>
+        </div>
+    </div>
+
+    <div class="story-container story-3">
+        <div class="arabesque-pattern"></div>
+        <div class="story-content">
+            <div class="story-logo">SAHARA<span>LAYER</span></div>
+            
+            <div class="s3-hero">
+                <p class="s3-tag">جاهز لتغيير هويتك؟</p>
+                <h1>ابدأ مشروعك الإبداعي اليوم</h1>
+                <div class="s3-image">
+                    [ مساحة لإضافة صورة مشروع سابق ]
+                </div>
+            </div>
+
+            <a href="#" class="btn-gold">تواصل معنا</a>
+            <div class="story-handle">@SAHARALAYER</div>
+        </div>
+    </div>
+
+</body>
+</html>
