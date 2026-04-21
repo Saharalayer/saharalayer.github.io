@@ -4,43 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>صحراء لاير | Sahara Layer - Digital Creative Studio</title>
-    <meta name="description" content="صحراء لاير: استوديو إبداعي متخصص في تصميم الهوية البصرية، البرمجة، وإدارة السوشيال ميديا بنمط مينيماليست مغربي.">
-    <meta name="keywords" content="تصميم جرافيك, برمجة تطبيقات, المغرب, سوشيال ميديا, Sahara Layer, Digital Marketing Morocco">
+    <title>صحراء لاير | Sahara Layer - استوديو إبداعي رقمي</title>
+    <meta name="description" content="صحراء لاير متخصصون في إدارة السوشيال ميديا، البرمجة المخصصة، التصميم الجرافيكي، وخدمات خرائط جوجل وسناب شات بنمط مينيماليست مغربي.">
+    <meta name="keywords" content="تصميم جرافيك المغرب, برمجة مواقع, سيو, إدارة سوشيال ميديا, Sahara Layer, Digital Agency Morocco">
+    <meta name="author" content="Sahara Layer">
     
+    <meta property="og:title" content="صحراء لاير - Sahara Layer">
+    <meta property="og:description" content="بساطة التصميم بروح مغربية عصرية">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* تنسيق سريع لضمان عمل الواجهة قبل تحميل ملف CSS الخارجي */
+        .lang-active { color: var(--gold) !important; font-weight: bold; }
+        [data-lang-content] { display: none; }
+        .show-content { display: block !important; }
+    </style>
 </head>
 <body>
 
-    <nav class="top-nav">
-        <div class="lang-switcher">
-            <button onclick="setLanguage('ar')">العربية</button>
-            <button onclick="setLanguage('en')">EN</button>
-            <button onclick="setLanguage('fr')">FR</button>
-            <button onclick="setLanguage('es')">ES</button>
+    <div class="top-bar">
+        <div class="container">
+            <div class="lang-switcher">
+                <button onclick="changeLanguage('ar')" id="btn-ar">العربية</button>
+                <button onclick="changeLanguage('en')" id="btn-en">EN</button>
+                <button onclick="changeLanguage('fr')" id="btn-fr">FR</button>
+                <button onclick="changeLanguage('es')" id="btn-es">ES</button>
+            </div>
         </div>
-    </nav>
+    </div>
 
     <header class="main-header">
-        <div class="logo">SAHARA LAYER</div>
-        <ul class="nav-links">
-            <li><a href="#home" data-key="nav-home">الرئيسية</a></li>
-            <li><a href="services.html" data-key="nav-services">خدماتنا</a></li>
-            <li><a href="#portfolio" data-key="nav-portfolio">معرض الأعمال</a></li>
-            <li><a href="#contact" data-key="nav-contact">اتصل بنا</a></li>
-        </ul>
+        <div class="container nav-container">
+            <div class="logo">SAHARA LAYER</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="tr" data-ar="الرئيسية" data-en="Home" data-fr="Accueil" data-es="Inicio">الرئيسية</a></li>
+                    <li><a href="services.html" class="tr" data-ar="خدماتنا" data-en="Services" data-fr="Services" data-es="Servicios">خدماتنا</a></li>
+                    <li><a href="#portfolio" class="tr" data-ar="معرض الأعمال" data-en="Portfolio" data-fr="Portfolio" data-es="Portafolio">معرض الأعمال</a></li>
+                    <li><a href="#contact" class="tr" data-ar="اتصل بنا" data-en="Contact" data-fr="Contact" data-es="Contacto">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 id="hero-title">صحراء لاير</h1>
-            <p id="hero-desc">بساطة التصميم بروح مغربية عصرية</p>
-            <a href="#contact" class="btn-main" data-key="btn-start">ابدأ مشروعك</a>
+        <div class="hero-content container">
+            <h1 class="tr" data-ar="صحراء لاير" data-en="Sahara Layer" data-fr="Sahara Layer" data-es="Sahara Layer">صحراء لاير</h1>
+            <p class="tr" data-ar="بساطة التصميم بروح مغربية عصرية" data-en="Design simplicity with a modern Moroccan spirit" data-fr="Simplicité du design avec un esprit marocain moderne" data-es="Simplicidad de diseño con un espíritu marroquí moderno">بساطة التصميم بروح مغربية عصرية</p>
+            <a href="#contact" class="btn-main tr" data-ar="ابدأ مشروعك" data-en="Start Your Project" data-fr="Commencer" data-es="Empezar">ابدأ مشروعك</a>
         </div>
     </section>
 
-    <script src="lang-script.js"></script>
+    <section class="services-brief container">
+        <h2 class="section-title tr" data-ar="ماذا نقدم؟" data-en="What We Offer" data-fr="Ce Que Nous Offrons" data-es="Qué Ofrecemos">ماذا نقدم؟</h2>
+        <div class="services-grid">
+            <div class="s-card">
+                <i class="fa-solid fa-hashtag"></i>
+                <h3 class="tr" data-ar="السوشيال ميديا" data-en="Social Media" data-fr="Réseaux Sociaux" data-es="Redes Sociales">السوشيال ميديا</h3>
+            </div>
+            <div class="s-card">
+                <i class="fa-solid fa-code"></i>
+                <h3 class="tr" data-ar="البرمجة" data-en="Programming" data-fr="Programmation" data-es="Programación">البرمجة</h3>
+            </div>
+            <div class="s-card">
+                <i class="fa-solid fa-pen-nib"></i>
+                <h3 class="tr" data-ar="التصميم" data-en="Design" data-fr="Design" data-es="Diseño">التصميم</h3>
+            </div>
+            <div class="s-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3 class="tr" data-ar="الخرائط" data-en="Maps & Snap" data-fr="Cartes & Snap" data-es="Mapas y Snap">الخرائط</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sahara Layer. Global Strategy, Moroccan Soul.</p>
+        </div>
+    </footer>
+
+    <script>
+        function changeLanguage(lang) {
+            // تغيير اتجاه الصفحة
+            if (lang === 'ar') {
+                document.documentElement.dir = "rtl";
+                document.documentElement.lang = "ar";
+            } else {
+                document.documentElement.dir = "ltr";
+                document.documentElement.lang = lang;
+            }
+
+            // تحديث النصوص التي تحمل كلاس tr
+            const elements = document.querySelectorAll('.tr');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerText = text;
+            });
+
+            // تحديث حالة الأزرار
+            document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('lang-active'));
+            document.getElementById(`btn-${lang}`).classList.add('lang-active');
+
+            // حفظ اللغة في المتصفح
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // تحميل اللغة المحفوظة عند فتح الموقع
+        window.onload = () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'ar';
+            changeLanguage(savedLang);
+        };
+    </script>
 </body>
 </html>
