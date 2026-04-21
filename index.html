@@ -4,77 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>صحراء لاير | Sahara Layer - تصميم وبرمجة بهوية مغربية</title>
-    <meta name="description" content="صحراء لاير متخصصون في التصميم الجرافيكي، بناء الهوية البصرية، وتطوير المواقع بنمط مينيماليست يجمع بين الأصالة المغربية والحداثة.">
-    <meta name="keywords" content="تصميم لوجو, هوية بصرية, برمجة مواقع, المغرب, Sahara Layer, Graphic Design, Web Development">
-    <link rel="canonical" href="https://username.github.io/" />
+    <title>صحراء لاير | Sahara Layer - Digital Creative Studio</title>
+    <meta name="description" content="صحراء لاير: استوديو إبداعي متخصص في تصميم الهوية البصرية، البرمجة، وإدارة السوشيال ميديا بنمط مينيماليست مغربي.">
+    <meta name="keywords" content="تصميم جرافيك, برمجة تطبيقات, المغرب, سوشيال ميديا, Sahara Layer, Digital Marketing Morocco">
     
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="lang-bar">
-        <a href="?lang=ar" class="active">العربية</a>
-        <a href="?lang=en">EN</a>
-        <a href="?lang=fr">FR</a>
-        <a href="?lang=es">ES</a>
-    </div>
+    <nav class="top-nav">
+        <div class="lang-switcher">
+            <button onclick="setLanguage('ar')">العربية</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('fr')">FR</button>
+            <button onclick="setLanguage('es')">ES</button>
+        </div>
+    </nav>
 
-    <header>
-        <nav>
-            <div class="logo">SAHARA LAYER</div>
-            <ul>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="services.html">صفحة الخدمات</a></li> <li><a href="#portfolio">معرض الأعمال</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
+    <header class="main-header">
+        <div class="logo">SAHARA LAYER</div>
+        <ul class="nav-links">
+            <li><a href="#home" data-key="nav-home">الرئيسية</a></li>
+            <li><a href="services.html" data-key="nav-services">خدماتنا</a></li>
+            <li><a href="#portfolio" data-key="nav-portfolio">معرض الأعمال</a></li>
+            <li><a href="#contact" data-key="nav-contact">اتصل بنا</a></li>
+        </ul>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>SAHARA LAYER</h1>
-            <p class="tagline">Design & Technology | Authentic Minimalism</p>
+            <h1 id="hero-title">صحراء لاير</h1>
+            <p id="hero-desc">بساطة التصميم بروح مغربية عصرية</p>
+            <a href="#contact" class="btn-main" data-key="btn-start">ابدأ مشروعك</a>
         </div>
     </section>
 
-    <section id="services" class="container">
-        <h2 class="section-title">إبداع بلا حدود</h2>
-        <div class="grid">
-            <div class="card lang-content ar">
-                <h3>تصميم الهوية</h3>
-                <p>نصنع علامات تجارية تحكي قصصاً.</p>
-            </div>
-            <div class="card lang-content en" style="display:none;">
-                <h3>Branding</h3>
-                <p>We create brands that tell stories.</p>
-            </div>
-            <div class="card lang-content fr" style="display:none;">
-                <h3>Branding</h3>
-                <p>Nous créons des marques qui racontent des histoires.</p>
-            </div>
-            <div class="card lang-content es" style="display:none;">
-                <h3>Identidad</h3>
-                <p>Creamos marcas que cuentan historias.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Sahara Layer. Global Reach, Moroccan Roots.</p>
-    </footer>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const lang = urlParams.get('lang') || 'ar';
-        document.documentElement.lang = lang;
-        document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-        
-        // إظهار المحتوى بناءً على اللغة
-        document.querySelectorAll('.lang-content').forEach(el => {
-            el.style.display = el.classList.contains(lang) ? 'block' : 'none';
-        });
-    </script>
+    <script src="lang-script.js"></script>
 </body>
 </html>
