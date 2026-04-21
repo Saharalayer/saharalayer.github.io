@@ -3,49 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتنا | Sahara Layer Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>خدماتنا | Sahara Layer - Digital Services</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Almarai:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="services-page">
 
     <header class="main-header">
-        <div class="logo">SAHARA LAYER</div>
-        <ul class="nav-links">
-            <li><a href="index.html">الرئيسية</a></li>
-        </ul>
+        <div class="container header-flex">
+            <div class="logo">SAHARA<span>LAYER</span></div>
+            
+            <div class="nav-wrapper">
+                <nav>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="index.html" class="tr" data-ar="الرئيسية" data-en="Home" data-fr="Accueil" data-es="Inicio">الرئيسية</a></li>
+                        <li><a href="#services-list" class="tr" data-ar="خدماتنا" data-en="Services" data-fr="Services" data-es="Servicios">خدماتنا</a></li>
+                        <li><a href="index.html#contact" class="tr" data-ar="اتصل بنا" data-en="Contact" data-fr="Contact" data-es="Contacto">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-lang-switcher">
+                    <select onchange="changeLang(this.value)" id="langSelect">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
     </header>
 
-    <section class="container">
-        <h2 class="section-title">خدماتنا الإحترافية</h2>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-hashtag icon"></i>
-                <h3>خدمات السوشيال ميديا</h3>
-                <p>إدارة منصات التواصل الاجتماعي، إنشاء المحتوى المرئي، وحملات التفاعل الإبداعية.</p>
-            </div>
-
-            <div class="service-card">
-                <i class="fa-solid fa-code icon"></i>
-                <h3>خدمات البرمجة</h3>
-                <p>بناء مواقع إلكترونية متطورة، تطبيقات ويب سريعة، وحلول برمجية مخصصة لعملك.</p>
-            </div>
-
-            <div class="service-card">
-                <i class="fa-solid fa-pen-nib icon"></i>
-                <h3>خدمات التصميم</h3>
-                <p>تصميم شعارات، هويات بصرية متكاملة، ومنشورات إعلانية بنمط مينيماليست فاخر.</p>
-            </div>
-
-            <div class="service-card">
-                <i class="fa-solid fa-location-dot icon"></i>
-                <h3>خرائط جوجل وسناب شات</h3>
-                <p>تحسين ظهورك على Google Maps، إدارة إعلانات سناب شات، وتصميم فلاتر جغرافية.</p>
-            </div>
+    <section class="page-banner">
+        <div class="container">
+            <h1 class="tr" data-ar="قائمة الخدمات الإبداعية" data-en="Creative Services List" data-fr="Liste des Services" data-es="Lista de Servicios">قائمة الخدمات الإبداعية</h1>
+            <p class="tr" data-ar="حلول رقمية متكاملة مصممة خصيصاً لنمو هويتك التجارية" data-en="Integrated digital solutions tailored for your brand growth" data-fr="Solutions numériques sur mesure pour votre croissance" data-es="Soluciones digitales a medida para su crecimiento">حلول رقمية متكاملة مصممة خصيصاً لنمو هويتك التجارية</p>
         </div>
     </section>
 
+    <section id="services-list" class="container section-padding">
+        <div class="services-detailed-grid">
+            
+            <div class="service-item">
+                <div class="s-content">
+                    <i class="fa-solid fa-bullhorn s-large-icon"></i>
+                    <h2 class="tr" data-ar="خدمات السوشيال ميديا" data-en="Social Media Services" data-fr="Services Médias Sociaux" data-es="Servicios de Redes Sociales">خدمات السوشيال ميديا</h2>
+                    <ul class="features-list tr-list">
+                        <li class="tr" data-ar="إدارة الحسابات بشكل احترافي" data-en="Professional Account Management">إدارة الحسابات بشكل احترافي</li>
+                        <li class="tr" data-ar="صناعة محتوى مرئي وجذاب" data-en="Visual Content Creation">صناعة محتوى مرئي وجذاب</li>
+                        <li class="tr" data-ar="إعلانات ممولة مستهدفة" data-en="Targeted Paid Ads">إعلانات ممولة مستهدفة</li>
+                    </ul>
+                    <a href="https://wa.me/YOUR_NUMBER" class="btn-order tr" data-ar="اطلب الخدمة" data-en="Order Now">اطلب الخدمة</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="s-content">
+                    <i class="fa-solid fa-code-merge s-large-icon"></i>
+                    <h2 class="tr" data-ar="خدمات البرمجة" data-en="Programming Services" data-fr="Services de Programmation" data-es="Servicios de Programación">خدمات البرمجة</h2>
+                    <ul class="features-list">
+                        <li class="tr" data-ar="تطوير مواقع الويب (Blogger & WP)" data-en="Web Development (Blogger & WP)">تطوير مواقع الويب (Blogger & WP)</li>
+                        <li class="tr" data-ar="برمجة أنظمة مخصصة بالبايثون" data-en="Custom Python Systems">برمجة أنظمة مخصصة بالبايثون</li>
+                        <li class="tr" data-ar="تطوير المتاجر الإلكترونية" data-en="E-commerce Development">تطوير المتاجر الإلكترونية</li>
+                    </ul>
+                    <a href="https://wa.me/YOUR_NUMBER" class="btn-order tr" data-ar="اطلب الخدمة" data-en="Order Now">اطلب الخدمة</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="s-content">
+                    <i class="fa-solid fa-palette s-large-icon"></i>
+                    <h2 class="tr" data-ar="خدمات التصميم" data-en="Design Services" data-fr="Services de Design" data-es="Servicios de Diseño">خدمات التصميم</h2>
+                    <ul class="features-list">
+                        <li class="tr" data-ar="تصميم شعارات وهويات بصرية" data-en="Logo & Branding Design">تصميم شعارات وهويات بصرية</li>
+                        <li class="tr" data-ar="تصميم إعلانات السوشيال ميديا" data-en="Social Media Ad Design">تصميم إعلانات السوشيال ميديا</li>
+                        <li class="tr" data-ar="تصميم عبوات المنتجات (Packaging)" data-en="Product Packaging Design">تصميم عبوات المنتجات (Packaging)</li>
+                    </ul>
+                    <a href="https://wa.me/YOUR_NUMBER" class="btn-order tr" data-ar="اطلب الخدمة" data-en="Order Now">اطلب الخدمة</a>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="s-content">
+                    <i class="fa-solid fa-earth-africa s-large-icon"></i>
+                    <h2 class="tr" data-ar="خرائط جوجل وسناب شات" data-en="Maps & Snapchat" data-fr="Maps & Snapchat" data-es="Mapas y Snapchat">خرائط جوجل وسناب شات</h2>
+                    <ul class="features-list">
+                        <li class="tr" data-ar="تحسين الظهور على خرائط جوجل" data-en="Google Maps SEO">تحسين الظهور على خرائط جوجل</li>
+                        <li class="tr" data-ar="تصميم فلاتر سناب شات الجغرافية" data-en="Snapchat Geofilters Design">تصميم فلاتر سناب شات الجغرافية</li>
+                        <li class="tr" data-ar="توثيق الأنشطة التجارية محلياً" data-en="Local Business Verification">توثيق الأنشطة التجارية محلياً</li>
+                    </ul>
+                    <a href="https://wa.me/YOUR_NUMBER" class="btn-order tr" data-ar="اطلب الخدمة" data-en="Order Now">اطلب الخدمة</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>SAHARA LAYER &copy; 2026 | CREATIVE EXCELLENCE</p>
+        </div>
+    </footer>
+
+    <script>
+        function changeLang(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.querySelectorAll('.tr').forEach(el => {
+                el.innerText = el.getAttribute('data-' + lang);
+            });
+            localStorage.setItem('sl_pref_lang', lang);
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('sl_pref_lang') || 'ar';
+            changeLang(savedLang);
+            document.getElementById('langSelect').value = savedLang;
+        };
+    </script>
 </body>
 </html>
