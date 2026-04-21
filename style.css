@@ -1,0 +1,158 @@
+:root {
+    --primary-color: #2d3436; /* لون داكن أنيق */
+    --accent-color: #c0392b;  /* لمسة حمراء مغربية خفيفة */
+    --bg-color: #fdfbf9;      /* لون خلفية كريمي هادئ */
+    --text-color: #444;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+/* القائمة العلويّة */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+nav .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* القسم الرئيسي */
+.hero {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://via.placeholder.com/1500x800'); /* يمكنك استبدالها بصورة مغربية */
+    background-size: cover;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* البطاقات والخدمات */
+.section-title {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 50px;
+    height: 2px;
+    background: var(--accent-color);
+    display: block;
+    margin: 10px auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #f0f0f0;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--accent-color);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.work-item {
+    background: #ddd;
+    height: 250px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}
+/* دعم اللغات اللاتينية */
+[lang="en"] body, [lang="fr"] body, [lang="es"] body {
+    font-family: 'Montserrat', sans-serif;
+    direction: ltr;
+    text-align: left;
+}
+
+/* بار اللغات */
+.lang-bar {
+    background: #fff;
+    padding: 10px 10%;
+    text-align: left;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.lang-bar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #999;
+}
+.lang-bar a.active {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* تحسين SEO عبر التجاوب مع الجوال */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    nav ul { display: none; } /* يمكن تحويلها لـ Hamburger Menu لاحقاً */
+}
