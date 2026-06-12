@@ -1,47 +1,520 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <title>قارئ الفيديو HLS</title>
-  <style>
-    body {
-      background: #f9f9f9;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    video {
-      width: 80%;
-      max-width: 800px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-  </style>
-</head>
-<body>
-  <h2>📺 قارئ الفيديو HLS</h2>
-  <video id="video" controls></video>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+let streamUrl = "https:\/\/s3.us-east-1.amazonaws.com\/simkr1\/hls\/0\/stream_640x360_800k.m3u8";
+let streamType = "hls";
+const hasServers = true;
+const servers = [{"name":"SD","type":"hls","url":"https://s3.us-east-1.amazonaws.com/simkr1/hls/0/stream_640x360_800k.m3u8","flag":"qa"},{"name":"HD","type":"hls","url":"https://s3.us-east-1.amazonaws.com/simkr1/hls/0/stream_1280x720_3300k.m3u8","flag":"qa"},{"name":"MAX 1","type":"iframe","url":"https://dfhreherherher.simoplay.com/embed.php?stream=ivedvqo3ltm","flag":"sa"},{"name":"MAX 2","type":"iframe","url":"https://dfhreherherher.simoplay.com/embed.php?stream=og6th1tl1be","flag":"sa"},{"name":"GB","type":"iframe","url":"https://s3.kora.st/ch?id=1","flag":"gb"},{"name":"US","type":"iframe","url":"https://s3.kora.st/ch?id=81","flag":"us"},{"name":"ES","type":"iframe","url":"https://s3.kora.st/ch?id=100","flag":"es"},{"name":"DE","type":"iframe","url":"https://s3.kora.st/ch?id=11","flag":"de"},{"name":"PT","type":"iframe","url":"https://s3.kora.st/ch?id=21","flag":"pt"},{"name":"GR","type":"iframe","url":"https://s3.kora.st/ch?id=23","flag":"gr"},{"name":"AU","type":"iframe","url":"https://s3.kora.st/ch?id=9","flag":"au"},{"name":"MX","type":"iframe","url":"https://s3.kora.st/ch?id=27","flag":"mx"},{"name":"CA","type":"iframe","url":"https://s3.kora.st/ch?id=31","flag":"ca"},{"name":"CZ","type":"iframe","url":"https://s3.kora.st/ch?id=41","flag":"cz"},{"name":"FR","type":"iframe","url":"https://s3.kora.st/ch?id=51","flag":"fr"},{"name":"PL","type":"iframe","url":"https://s3.kora.st/ch?id=60","flag":"pl"},{"name":"DK","type":"iframe","url":"https://s3.kora.st/ch?id=69","flag":"dk"},{"name":"FI","type":"iframe","url":"https://s3.kora.st/ch?id=71","flag":"fi"},{"name":"SE","type":"iframe","url":"https://s3.kora.st/ch?id=74","flag":"se"},{"name":"NL","type":"iframe","url":"https://s3.kora.st/ch?id=88","flag":"nl"},{"name":"TR","type":"iframe","url":"https://s3.kora.st/ch?id=91","flag":"tr"}];
+const serverTabs = document.querySelectorAll('.server-tab');
+const video = document.getElementById('video');
+const framePlayer = document.getElementById('framePlayer');
+const loading = document.getElementById('loading');
+const noStreamBox = document.getElementById('noStreamBox');
+const loadingText = document.getElementById('loadingText');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const playPauseIcon = document.getElementById('playPauseIcon');
+const muteBtn = document.getElementById('muteBtn');
+const muteIcon = document.getElementById('muteIcon');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeControl = document.querySelector('.volume-control');
+const centerUnmuteBtn = document.getElementById('centerUnmuteBtn');
+const playerPage = document.getElementById('playerPage');
+const qualityMenu = document.getElementById('qualityMenu');
+const qualityBtn = document.getElementById('qualityBtn');
+let hls = null;
+let currentLevel = -1;
+let controlsTimer = null;
 
-  <!-- مكتبة hls.js -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script>
-    const video = document.getElementById('video');
-    const videoSrc = "https://s3.us-east-1.amazonaws.com/simkr1/hls/0/stream_1280x720_3300k.m3u8";
+const rotateHint = document.getElementById('rotateHint');
+
+function isMobileDevice(){
+    return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
+
+function isPortraitScreen(){
+    return window.innerHeight > window.innerWidth;
+}
+
+async function lockLandscapeIfPossible(){
+    if (!isMobileDevice()) return;
+
+    try {
+        if (screen.orientation && screen.orientation.lock) {
+            await screen.orientation.lock('landscape');
+        }
+    } catch(e) {
+        /*
+          بعض المتصفحات لا تسمح بقفل الاتجاه.
+          لذلك نعرض رسالة خفيفة للمستخدم يدور الهاتف.
+        */
+        if (rotateHint && isPortraitScreen()) {
+            rotateHint.classList.add('show');
+            setTimeout(() => rotateHint.classList.remove('show'), 2600);
+        }
+    }
+}
+
+async function unlockOrientationIfPossible(){
+    try {
+        if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+        }
+    } catch(e){}
+}
+
+function updateRotateHint(){
+    if (!rotateHint) return;
+
+    if (document.fullscreenElement && isMobileDevice() && isPortraitScreen()) {
+        rotateHint.classList.add('show');
+    } else {
+        rotateHint.classList.remove('show');
+    }
+}
+
+window.addEventListener('orientationchange', () => {
+    setTimeout(updateRotateHint, 300);
+});
+
+window.addEventListener('resize', () => {
+    setTimeout(updateRotateHint, 150);
+});
+
+function showControls(){
+    playerPage.classList.remove('hide-controls');
+    clearTimeout(controlsTimer);
+    controlsTimer = setTimeout(() => {
+        playerPage.classList.add('hide-controls');
+    }, 5000);
+}
+['mousemove', 'mousedown', 'touchstart', 'touchmove', 'keydown'].forEach(eventName => {
+    document.addEventListener(eventName, showControls, { passive:true });
+});
+function syncFullscreenUI(){
+    const isFs = !!document.fullscreenElement;
+    playerPage.classList.toggle('fullscreen-active', isFs);
+
+    if (!isFs) {
+        unlockOrientationIfPossible();
+        if (rotateHint) rotateHint.classList.remove('show');
+    } else {
+        updateRotateHint();
+    }
+
+    showControls();
+}
+
+document.addEventListener('fullscreenchange', syncFullscreenUI);
+window.addEventListener('resize', showControls);
+showControls();
+syncFullscreenUI();
+function showLoading(text = 'جار التحميل...'){
+    loadingText.textContent = text;
+    loading.style.display = 'flex';
+}
+function hideLoading(){
+    loading.style.display = 'none';
+}
+
+function hideLoadingIfPlaying(){
+    if (!video.paused && !video.ended && video.readyState >= 2) {
+        hideLoading();
+    }
+}
+function setPauseIcon(){
+    playPauseIcon.innerHTML = `
+        <rect class="fill-white" x="6" y="5" width="4" height="14"></rect>
+        <rect class="fill-white" x="14" y="5" width="4" height="14"></rect>
+    `;
+}
+function setPlayIcon(){
+    playPauseIcon.innerHTML = `
+        <polygon class="fill-white" points="8,5 19,12 8,19"></polygon>
+    `;
+}
+function setPlayerMode(type){
+    const isFrame = type === 'iframe' || type === 'frame';
+
+    playerPage.classList.toggle('iframe-mode', isFrame);
+
+    if (isFrame) {
+        if (hls) {
+            hls.destroy();
+            hls = null;
+        }
+
+        video.pause();
+        video.removeAttribute('src');
+        video.style.display = 'none';
+        framePlayer.style.display = 'block';
+    } else {
+        framePlayer.src = '';
+        framePlayer.style.display = 'none';
+        video.style.display = 'block';
+    }
+}
+
+function loadStream(){
+    if (!hasServers || !streamUrl || streamType === 'none') {
+        playerPage.classList.add('no-stream-mode');
+        hideLoading();
+        try {
+            if (hls) { hls.destroy(); hls = null; }
+            video.pause();
+            video.removeAttribute('src');
+            video.load();
+            framePlayer.src = '';
+        } catch(e){}
+        return;
+    }
+
+    playerPage.classList.remove('no-stream-mode');
+    showLoading('جار التحميل...');
+
+    setPlayerMode(streamType);
+
+    if (hls) {
+        hls.destroy();
+        hls = null;
+    }
+
+    if (streamType === 'iframe' || streamType === 'frame') {
+        framePlayer.src = streamUrl;
+
+        setTimeout(() => {
+            hideLoading();
+        }, 900);
+
+        return;
+    }
 
     if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(videoSrc);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, function() {
-        video.play();
-      });
+        hls = new Hls({
+            liveSyncDurationCount: 3,
+            maxBufferLength: 25,
+            maxMaxBufferLength: 40,
+            enableWorker: true,
+            lowLatencyMode: true
+        });
+        hls.loadSource(streamUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            buildQualityMenu();
+            video.play().then(() => {
+                setPauseIcon();
+                hideLoading();
+            }).catch(() => {
+                showLoading('اضغط تشغيل لبدء البث');
+                setPlayIcon();
+            });
+        });
+        hls.on(Hls.Events.LEVEL_SWITCHED, function(event, data){
+            currentLevel = data.level;
+            updateQualityActive();
+        });
+        hls.on(Hls.Events.ERROR, function(event, data){
+            if (data.fatal) {
+                showLoading('توقف البث... يتم إعادة المحاولة');
+                setTimeout(loadStream, 2500);
+            } else {
+                if (video.paused || video.readyState < 2) {
+                    showLoading('جار التحميل...');
+                } else {
+                    hideLoading();
+                }
+            }
+        });
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      // دعم مباشر في Safari
-      video.src = videoSrc;
-      video.addEventListener('loadedmetadata', function() {
-        video.play();
-      });
+        video.src = streamUrl;
+        video.addEventListener('loadedmetadata', function () {
+            video.play().then(() => {
+                setPauseIcon();
+                hideLoading();
+            }).catch(() => {
+                showLoading('اضغط تشغيل لبدء البث');
+                setPlayIcon();
+            });
+        }, { once: true });
+    } else {
+        loading.innerHTML = '<div style="color:#fff;font-size:18px;">المتصفح لا يدعم HLS</div>';
     }
-  </script>
-</body>
-</html>
+}
+loadStream();
+
+serverTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const nextUrl = tab.dataset.serverUrl;
+        const nextType = tab.dataset.serverType || 'hls';
+
+        if (!nextUrl || (nextUrl === streamUrl && nextType === streamType)) {
+            showControls();
+            return;
+        }
+
+        serverTabs.forEach(item => item.classList.remove('active'));
+        tab.classList.add('active');
+
+        streamUrl = nextUrl;
+        streamType = nextType;
+        currentLevel = -1;
+        showControls();
+        showLoading('جار تشغيل السيرفر...');
+
+        try {
+            video.pause();
+            video.removeAttribute('src');
+            video.load();
+        } catch(e){}
+
+        loadStream();
+    });
+});
+
+function buildQualityMenu(){
+    qualityMenu.innerHTML = '';
+    const autoBtn = document.createElement('button');
+    autoBtn.className = 'quality-item active';
+    autoBtn.textContent = 'Auto';
+    autoBtn.onclick = function(){
+        if (hls) {
+            hls.currentLevel = -1;
+            currentLevel = -1;
+            updateQualityActive();
+            qualityMenu.classList.remove('show');
+        }
+    };
+    qualityMenu.appendChild(autoBtn);
+    if (!hls || !hls.levels || hls.levels.length === 0) {
+        const item = document.createElement('button');
+        item.className = 'quality-item';
+        item.textContent = 'الجودة غير متوفرة';
+        qualityMenu.appendChild(item);
+        return;
+    }
+    hls.levels.forEach((level, index) => {
+        const height = level.height ? level.height + 'p' : 'Quality ' + (index + 1);
+        const bitrate = level.bitrate ? Math.round(level.bitrate / 1000) + ' kbps' : '';
+        const btn = document.createElement('button');
+        btn.className = 'quality-item';
+        btn.textContent = bitrate ? height + ' - ' + bitrate : height;
+        btn.dataset.level = index;
+        btn.onclick = function(){
+            if (hls) {
+                hls.currentLevel = index;
+                currentLevel = index;
+                showLoading('تغيير الجودة...');
+                setTimeout(hideLoading, 900);
+                updateQualityActive();
+                qualityMenu.classList.remove('show');
+            }
+        };
+        qualityMenu.appendChild(btn);
+    });
+}
+function updateQualityActive(){
+    document.querySelectorAll('.quality-item').forEach(btn => {
+        btn.classList.remove('active');
+        if (currentLevel === -1 && btn.textContent === 'Auto') {
+            btn.classList.add('active');
+        }
+        if (btn.dataset.level !== undefined && Number(btn.dataset.level) === currentLevel) {
+            btn.classList.add('active');
+        }
+    });
+}
+qualityBtn.addEventListener('click', () => {
+    qualityMenu.classList.toggle('show');
+});
+document.addEventListener('click', function(e){
+    if (!qualityMenu.contains(e.target) && !qualityBtn.contains(e.target)) {
+        qualityMenu.classList.remove('show');
+    }
+});
+video.addEventListener('waiting', () => {
+    showLoading('جار التحميل...');
+    setTimeout(hideLoadingIfPlaying, 1200);
+});
+video.addEventListener('stalled', () => {
+    showLoading('توقف البث... جار إعادة الاتصال');
+    setTimeout(hideLoadingIfPlaying, 1500);
+});
+video.addEventListener('seeking', () => {
+    showLoading('جار التحميل...');
+    setTimeout(hideLoadingIfPlaying, 1000);
+});
+video.addEventListener('playing', () => {
+    hideLoading();
+    setPauseIcon();
+});
+
+video.addEventListener('canplay', hideLoadingIfPlaying);
+video.addEventListener('canplaythrough', hideLoadingIfPlaying);
+video.addEventListener('loadeddata', hideLoadingIfPlaying);
+video.addEventListener('timeupdate', hideLoadingIfPlaying);
+video.addEventListener('pause', () => {
+    showLoading('البث متوقف مؤقتاً');
+    setPlayIcon();
+});
+video.addEventListener('ended', () => {
+    showLoading('انتهى البث');
+    setPlayIcon();
+});
+video.addEventListener('error', () => {
+    showLoading('خطأ في البث... جار إعادة المحاولة');
+    setTimeout(loadStream, 2500);
+});
+playPauseBtn.addEventListener('click', () => {
+    if (video.paused) {
+        showLoading('جار تشغيل البث...');
+        video.play().then(() => {
+            hideLoading();
+            setPauseIcon();
+        }).catch(() => {
+            showLoading('تعذر تشغيل البث');
+        });
+    } else {
+        video.pause();
+        showLoading('البث متوقف مؤقتاً');
+        setPlayIcon();
+    }
+});
+function syncMuteUI(){
+    const volumeValue = Math.round(video.volume * 100);
+    volumeSlider.value = video.muted ? 0 : volumeValue;
+    if (video.muted || video.volume === 0) {
+        centerUnmuteBtn.classList.add('show');
+        muteIcon.innerHTML = `
+            <path d="M11 5L6 9H3v6h3l5 4V5z"></path>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        `;
+    } else {
+        centerUnmuteBtn.classList.remove('show');
+        if (video.volume <= 0.5) {
+            muteIcon.innerHTML = `
+                <path d="M11 5L6 9H3v6h3l5 4V5z"></path>
+                <path d="M16 9a5 5 0 0 1 0 6"></path>
+            `;
+        } else {
+            muteIcon.innerHTML = `
+                <path d="M11 5L6 9H3v6h3l5 4V5z"></path>
+                <path d="M16 9a5 5 0 0 1 0 6"></path>
+                <path d="M19 6a9 9 0 0 1 0 12"></path>
+            `;
+        }
+    }
+}
+muteBtn.addEventListener('click', () => {
+    if (video.muted || video.volume === 0) {
+        video.muted = false;
+        if (video.volume === 0) video.volume = 1;
+    } else {
+        video.muted = true;
+    }
+    syncMuteUI();
+});
+volumeSlider.addEventListener('input', () => {
+    const value = Number(volumeSlider.value);
+    video.volume = value / 100;
+    video.muted = value === 0;
+    syncMuteUI();
+    if (video.paused && value > 0) {
+        video.play().catch(() => {});
+    }
+});
+centerUnmuteBtn.addEventListener('click', () => {
+    video.muted = false;
+    video.volume = 1;
+    volumeSlider.value = 100;
+    syncMuteUI();
+    if (video.paused) {
+        video.play().catch(() => {});
+    }
+});
+video.addEventListener('volumechange', syncMuteUI);
+syncMuteUI();
+let volumeOpenTimer = null;
+function openVolumeControl(){
+    volumeControl.classList.add('volume-open');
+    clearTimeout(volumeOpenTimer);
+    volumeOpenTimer = setTimeout(() => {
+        if (!volumeControl.matches(':hover') && document.activeElement !== volumeSlider) {
+            volumeControl.classList.remove('volume-open');
+        }
+    }, 2500);
+}
+muteBtn.addEventListener('click', openVolumeControl);
+volumeSlider.addEventListener('input', openVolumeControl);
+volumeSlider.addEventListener('focus', openVolumeControl);
+volumeControl.addEventListener('mouseleave', () => {
+    clearTimeout(volumeOpenTimer);
+    volumeOpenTimer = setTimeout(() => {
+        if (document.activeElement !== volumeSlider) {
+            volumeControl.classList.remove('volume-open');
+        }
+    }, 500);
+});
+document.getElementById('reloadBtn').addEventListener('click', () => {
+    loadStream();
+});
+document.getElementById('pipBtn').addEventListener('click', async () => {
+    try {
+        if (document.pictureInPictureElement) {
+            await document.exitPictureInPicture();
+        } else if (document.pictureInPictureEnabled) {
+            await video.requestPictureInPicture();
+        }
+    } catch(e){}
+});
+document.getElementById('fullscreenBtn').addEventListener('click', async () => {
+    try {
+        if (!document.fullscreenElement) {
+            await playerPage.requestFullscreen();
+
+            /*
+              Mobile only:
+              after fullscreen, try to rotate/lock to landscape automatically.
+              Works mostly on Android Chrome and supported browsers.
+              iPhone Safari may block orientation lock, so we show a rotate hint.
+            */
+            await lockLandscapeIfPossible();
+            setTimeout(updateRotateHint, 250);
+        } else {
+            await document.exitFullscreen();
+            await unlockOrientationIfPossible();
+        }
+
+        setTimeout(syncFullscreenUI, 100);
+    } catch(e){
+        updateRotateHint();
+    }
+});
+document.getElementById('embedBtn').addEventListener('click', function(){
+    openEmbedModal();
+});
+function openEmbedModal(){
+    const modal = document.getElementById('embedModal');
+    const code = document.getElementById('embedCode');
+    const iframeCode = `<iframe src="${window.location.href}" width="100%" height="500" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
+    code.value = iframeCode;
+    modal.style.display = 'flex';
+}
+function closeEmbedModal(){
+    document.getElementById('embedModal').style.display = 'none';
+}
+function copyEmbedCode(){
+    const code = document.getElementById('embedCode');
+    code.select();
+    code.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(code.value).then(() => {
+        alert('تم نسخ كود البث');
+    }).catch(() => {
+        document.execCommand('copy');
+        alert('تم نسخ كود البث');
+    });
+}
+document.getElementById('embedModal').addEventListener('click', function(e){
+    if (e.target === this) {
+        closeEmbedModal();
+    }
+});
+</script>
