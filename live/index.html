@@ -3,24 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>مشغل البث المباشر</title>
-  <!-- استدعاء Video.js -->
+  <!-- مكتبة Video.js -->
   <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
   <style>
     body {
-      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
       font-family: "Cairo", sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .video-js {
-      width: 80%;
-      max-width: 800px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #fce4ec, #f3e5f5); /* خلفية وردية/بنفسجية ناعمة */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
     h2 {
       color: #d63384; /* وردي أنيق */
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    .video-js {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    /* تحسين التجاوب */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 20px;
+      }
+      .video-js {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -32,6 +48,7 @@
     class="video-js vjs-big-play-centered"
     controls
     preload="auto"
+    poster="https://via.placeholder.com/900x500/ffe4e1/000000?text=RB+FL+|+Live+Stream"
     data-setup='{}'>
     <source src="https://s3.us-east-1.amazonaws.com/simkr1/hls/0/stream_640x360_800k.m3u8" type="application/x-mpegURL" />
   </video>
